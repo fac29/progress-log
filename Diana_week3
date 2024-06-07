@@ -1,21 +1,53 @@
 ## Guidance
 Answer the following questions considering the learning outcomes for
 - [Week 1](https://learn.foundersandcoders.com/course/syllabus/developer/project-1-server/learning-outcomes/)
-- [Week 2](https://learn.foundersandcoders.com/course/syllabus/developer/project-1-frontend/learning-outcomes/)
-- [Week 3](https://learn.foundersandcoders.com/course/syllabus/developer/project-1-test-deploy/learning-outcomes/)
 
-Make sure to record evidence of your processes. You can use code snippets, screenshots or any other material to support your answers.
-
-Do not fill in the feedback section. The Founders and Coders team will update this with feedback on your progress.
 
 ## Assessment -> week 3 progress Assessment 
  ### 1. Show evidence of some of the learning outcomes you have achieved this week.
 > **[Learning outcomes...]**  
-> [your evidence here]
+> I learnt how to get and post resources from a server.
+that is why you use an API -> it gives you routes to access you data. I learnt about HTTP protocals including
+GET
+POST
+PUT
+DELETE
+and how to make a dynamic route with a semi colon :id
 
+req.params. 
+
+```
+export function FILTERhandler(app: Express) {
+	app.get('/filter/:category/:difficulty', async (req, res) => {
+		const fileContent = await loadData();
+		let Allquestions = fileContent.questions;
+
+		const category = req.params.category as CategoryFilterTypes;
+		const difficulty = req.params.difficulty as Difficulty;
+
+		let result = determineFilter(Allquestions, category, difficulty);
+
+		try {
+			res.json(result);
+			// res.status(200).send('Filter successfully applied!');
+		} catch (error) {
+			console.log(error);
+			res.status(500).send('Error in applying filter');
+		}
+	});
+}
+
+```
+
+
+I used BRUNO which is a client side API to test if the routes are working correctly. 
  ### 2. Show an example of some of the learning outcomes you have struggled with and/or would like to re-visit.
-> [**Learning outcome...**]  
-> [your evidence here]
+I still struggle with understanding why you would use ? 
+
+and how to filter with a query param on
+https://www.moesif.com/blog/technical/api-design/REST-API-Design-Filtering-Sorting-and-Pagination/
+
+
 
 ## Feedback (For CF's)
 > [**Course Facilitator name**]  
